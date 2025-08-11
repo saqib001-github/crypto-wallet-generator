@@ -4,6 +4,7 @@ import { derivePath } from "ed25519-hd-key"
 import { Keypair } from "@solana/web3.js"
 import { Wallet, HDNodeWallet } from "ethers"
 import nacl from "tweetnacl"
+import { toast } from "@/hooks/use-toast"
 
 export interface SolanaWallet {
   id: string
@@ -79,6 +80,10 @@ export const fetchSolanaBalance = createAsyncThunk(
       })
 
       const data = await response.json()
+      toast({
+        title: "Balance",
+        description: JSON.stringify(data)
+      })
       const balance = data.result?.value ? data.result.value / 1000000000 : 0
 
       return { walletId, balance }
