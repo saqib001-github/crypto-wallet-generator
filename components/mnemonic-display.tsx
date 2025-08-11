@@ -11,7 +11,7 @@ interface MnemonicDisplayProps {
 }
 
 export function MnemonicDisplay({ mnemonic, onCopy }: MnemonicDisplayProps) {
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
   const words = mnemonic.split(" ")
 
   return (
