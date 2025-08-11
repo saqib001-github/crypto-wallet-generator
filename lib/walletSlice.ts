@@ -80,10 +80,6 @@ export const fetchSolanaBalance = createAsyncThunk(
       })
 
       const data = await response.json()
-      toast({
-        title: "Balance",
-        description: JSON.stringify(data)
-      })
       const balance = data.result?.value ? data.result.value / 1000000000 : 0
 
       return { walletId, balance }
